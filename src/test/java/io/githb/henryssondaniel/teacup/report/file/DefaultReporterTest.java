@@ -202,7 +202,7 @@ class DefaultReporterTest {
     Reporter reporter = new DefaultReporter(folder);
     reporter.initialize();
 
-    assertThat(folder.resolve(NAME).toFile().createNewFile());
+    assertThat(folder.resolve(NAME).toFile().createNewFile()).isTrue();
     reporter.initialized(Collections.singletonList(node));
 
     verify(node).getName();
