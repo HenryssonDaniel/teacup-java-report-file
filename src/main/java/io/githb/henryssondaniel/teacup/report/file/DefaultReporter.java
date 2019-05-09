@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -104,7 +105,7 @@ public class DefaultReporter implements Reporter {
   }
 
   @Override
-  public void initialized(Iterable<? extends Node> nodes) {
+  public void initialized(Collection<? extends Node> nodes) {
     LOGGER.log(Level.FINE, "Initialized");
 
     if (rootPath != null) createDirectories(map, nodes, rootPath);
