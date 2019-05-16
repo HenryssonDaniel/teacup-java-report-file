@@ -75,7 +75,7 @@ public class DefaultReporter implements Reporter {
     else if (status == Status.FAILED) failed++;
     else successful++;
 
-    var path = Optional.ofNullable(map.get(node)).orElseGet(() -> rootLog);
+    var path = Optional.ofNullable(map.remove(node)).orElseGet(() -> rootLog);
     if (path != null)
       createHandler(path.toString())
           .ifPresent(
@@ -123,7 +123,7 @@ public class DefaultReporter implements Reporter {
   public void skipped(Node node, String reason) {
     LOGGER.log(Level.INFO, "Skipped");
 
-    var path = Optional.ofNullable(map.get(node)).orElseGet(() -> rootLog);
+    var path = Optional.ofNullable(map.remove(node)).orElseGet(() -> rootLog);
     if (path != null) {
       skipped++;
 
@@ -168,6 +168,8 @@ public class DefaultReporter implements Reporter {
 
     aborted = 0;
     failed = 0;
+    rootLog = null;
+    rootPath = null;
     skipped = 0;
     successful = 0;
   }
