@@ -82,7 +82,7 @@ publishing {
 
             pom {
                 name = project.group + ':' + project.name
-                description = 'Java Testing Framework for Communication Protocols and Web Services with file'
+                description = 'Report Teacup data to a file'
                 url = 'https://github.com/HenryssonDaniel/teacup-java-report-file'
 
                 licenses {
