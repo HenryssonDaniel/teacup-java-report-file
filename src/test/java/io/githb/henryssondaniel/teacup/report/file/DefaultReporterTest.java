@@ -9,7 +9,7 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import io.github.henryssondaniel.teacup.core.reporting.Reporter;
@@ -96,7 +96,7 @@ class DefaultReporterTest {
 
     verify(result).getStatus();
     verify(result, times(0)).getThrowable();
-    verifyZeroInteractions(node);
+    verifyNoInteractions(node);
   }
 
   @Test
@@ -105,7 +105,7 @@ class DefaultReporterTest {
 
     verify(result).getStatus();
     verify(result, times(0)).getThrowable();
-    verifyZeroInteractions(node);
+    verifyNoInteractions(node);
   }
 
   @Test
@@ -240,7 +240,7 @@ class DefaultReporterTest {
   @Test
   void initializedWhenNoRoot() {
     new DefaultReporter().initialized(Collections.singletonList(node));
-    verifyZeroInteractions(node);
+    verifyNoInteractions(node);
   }
 
   @Test
@@ -254,15 +254,15 @@ class DefaultReporterTest {
 
     verify(logRecord).getInstant();
     verify(logRecord, times(4)).getLevel();
-    verifyZeroInteractions(node);
+    verifyNoInteractions(node);
   }
 
   @Test
   void logWhenNoRoot() {
     new DefaultReporter().log(logRecord, node);
 
-    verifyZeroInteractions(logRecord);
-    verifyZeroInteractions(node);
+    verifyNoInteractions(logRecord);
+    verifyNoInteractions(node);
   }
 
   @Test
@@ -271,13 +271,13 @@ class DefaultReporterTest {
     reporter.initialize();
     reporter.skipped(node, REASON);
 
-    verifyZeroInteractions(node);
+    verifyNoInteractions(node);
   }
 
   @Test
   void skippedWhenNoRoot() {
     new DefaultReporter().skipped(node, REASON);
-    verifyZeroInteractions(node);
+    verifyNoInteractions(node);
   }
 
   @Test
@@ -286,13 +286,13 @@ class DefaultReporterTest {
     reporter.initialize();
     reporter.started(node);
 
-    verifyZeroInteractions(node);
+    verifyNoInteractions(node);
   }
 
   @Test
   void startedWhenNoRoot() {
     new DefaultReporter().started(node);
-    verifyZeroInteractions(node);
+    verifyNoInteractions(node);
   }
 
   @Test
